@@ -1,0 +1,33 @@
+<div class="container">
+  <h1>JSON Data</h1>
+  <pre>{{ jsonData | json }}</pre>
+
+  <h2>Edit JSON Data</h2>
+  <mat-card>
+    <form *ngIf="jsonForm" [formGroup]="jsonForm">
+
+      <mat-form-field appearance="fill">
+        <mat-label>Имя</mat-label>
+        <input matInput formControlName="name" type="text" />
+        <mat-error *ngIf="jsonForm.controls['name'].errors && (jsonForm.controls['name'].touched)">
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Возраст</mat-label>
+        <input matInput formControlName="age" type="number" />
+        <mat-error *ngIf="jsonForm.controls['age'].errors && (jsonForm.controls['age'].touched)">
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Должность</mat-label>
+        <input matInput formControlName="occupation" type="text" />
+        <mat-error *ngIf="jsonForm.controls['occupation'].errors && (jsonForm.controls['occupation'].touched)">
+        </mat-error>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit" [disabled]="jsonForm.invalid" (click)="updateJsonData()">Update JSON</button>
+    </form>
+  </mat-card>
+</div>
